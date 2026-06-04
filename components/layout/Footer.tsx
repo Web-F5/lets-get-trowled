@@ -28,8 +28,11 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <Link href="/" className="flex items-center gap-3 mb-5">
-            <Image src="/images/logo_white.webp" alt="Let's Get Trowled" width={44} height={44} className="w-11 h-11 object-contain" />
-            <span className="font-display text-xl font-bold text-brand-primary">Let&apos;s Get Trowled</span>
+            <Image src="/images/logo_white.webp" alt="Let's Get Trowled" 
+              width={176}
+              height={176}
+              className="w-36 h-36 sm:w-44 sm:h-44 object-contain" />
+            <span className="font-display text-xl font-bold text-brand-primary"></span>
           </Link>
           <p className="text-sm leading-relaxed text-brand-sand/80 mb-5">
             Professional plastering services in Seymour and throughout Central Victoria. Licensed, insured, and dedicated to quality on every job.
