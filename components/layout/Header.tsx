@@ -45,7 +45,7 @@ export default function Header() {
               alt="Let's Get Trowled"
               width={176}
               height={176}
-              className="w-40 h-40 sm:w-44 sm:h-44 object-contain"
+              className="w-36 h-36 sm:w-44 sm:h-44 object-contain"
             />
           </Link>
 
