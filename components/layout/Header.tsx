@@ -39,7 +39,7 @@ export default function Header() {
         <div className="grid h-[75px] lg:h-18" style={{ gridTemplateColumns: "auto 1fr auto", gridTemplateRows: "75px" }}>
 
           {/* ── Logo (left) ─────────────────────────────────── */}
-          <Link href="/" className="self-start flex items-center flex-shrink-0 -mt-10 sm:-mt-14">
+          <Link href="/" className="self-start flex items-center flex-shrink-0 -mt-6 sm:-mt-14">
             <Image
               src="/images/logo_white.webp"
               alt="Let's Get Trowled"
