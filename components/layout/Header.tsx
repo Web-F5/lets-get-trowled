@@ -36,10 +36,10 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* auto | 1fr | auto — logo and CTA take only what they need,
             nav gets the remaining space and centres within it           */}
-        <div className="grid h-[75px] lg:h-16" style={{ gridTemplateColumns: "auto 1fr auto", gridTemplateRows: "75px" }}>
+        <div className="grid h-[75px] lg:h-18" style={{ gridTemplateColumns: "auto 1fr auto", gridTemplateRows: "75px" }}>
 
           {/* ── Logo (left) ─────────────────────────────────── */}
-          <Link href="/" className="self-start flex items-center flex-shrink-0 -mt-9 sm:-mt-14">
+          <Link href="/" className="self-start flex items-center flex-shrink-0 -mt-10 sm:-mt-14">
             <Image
               src="/images/logo_white.webp"
               alt="Let's Get Trowled"
