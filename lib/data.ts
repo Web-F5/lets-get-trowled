@@ -1318,5 +1318,4 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   { src: "/images/ceiling-roses/image4.webp", alt: "Repaired and restored ceiling rose in period property in Seymour VIC", caption: "Ceiling rose repair and restoration" },
   { src: "/images/plaster-patching/image1.webp", alt: "Plasterer repairing crack in plaster wall in Seymour home", caption: "Plaster crack repair" },
   { src: "/images/plaster-patching/image2.webp", alt: "Hole in plasterboard wall patched and set to seamless finish in Seymour residence", caption: "Plasterboard hole patch — seamless finish" },
-  { src: "/images/plaster-patching/image3.webp", alt: "Water-damaged plaster ceiling repaired and re-plastered in Seymour property", caption: "Water damage plaster repair — ceiling" },
 ];
