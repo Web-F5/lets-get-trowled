@@ -50,10 +50,6 @@ export default function ContactPage() {
                   content: <a href={`tel:${CLIENT.phoneRaw}`} className="text-xl font-bold text-brand-accent hover:text-brand-accent-hover transition-colors">{CLIENT.phone}</a>,
                 },
                 {
-                  icon: <MailIcon />, label: "Email",
-                  content: <a href={`mailto:${CLIENT.email}`} className="text-brand-dark hover:text-brand-accent transition-colors">{CLIENT.email}</a>,
-                },
-                {
                   icon: <ClockIcon />, label: "Business Hours",
                   content: (
                     <ul className="text-sm text-brand-charcoal/70 space-y-0.5">
