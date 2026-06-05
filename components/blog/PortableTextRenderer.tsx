@@ -52,18 +52,23 @@ const components: PortableTextComponents = {
     normal: ({ children }) => (
       <p className="text-brand-charcoal/80 text-lg leading-relaxed mb-5">{children}</p>
     ),
+    h1: ({ children }) => (
+      <h1 className="font-display text-3xl md:text-4xl font-bold text-brand-dark mt-12 mb-4 pb-3 border-b-2 border-brand-accent leading-tight">
+        {children}
+      </h1>
+    ),
     h2: ({ children }) => (
-      <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-dark mt-12 mb-4 pb-3 border-b-2 border-brand-accent leading-tight">
+      <h2 className="font-display text-2xl md:text-3xl font-bold text-brand-dark mt-10 mb-3 leading-snug">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="font-display text-2xl font-bold text-brand-dark mt-8 mb-3 leading-snug">
+      <h3 className="font-display text-xl font-bold text-brand-dark mt-8 mb-2 leading-snug">
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="font-display text-xl font-bold text-brand-dark mt-6 mb-2">{children}</h4>
+      <h4 className="font-display text-lg font-bold text-brand-dark mt-6 mb-2">{children}</h4>
     ),
     blockquote: ({ children }) => (
       <blockquote className="my-8 pl-6 border-l-4 border-brand-accent bg-brand-sand rounded-r-xl py-4 pr-4">
