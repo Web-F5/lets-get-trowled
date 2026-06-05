@@ -1,174 +1,165 @@
-import { PortableText, PortableTextComponents } from '@portabletext/react'
-import type { PortableTextBlock } from '@portabletext/types'
+import Image from "next/image";
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import type { PortableTextBlock } from "@portabletext/types";
 
-// ---------------------------------------------------------------------------
-// Custom block components
-// ---------------------------------------------------------------------------
+// ── Custom block type components ────────────────────────────────
 
-const H2 = ({ children }: { children?: React.ReactNode }) => (
-  <h2 className="blog-h2">{children}</h2>
-)
-
-const H3 = ({ children }: { children?: React.ReactNode }) => (
-  <h3 className="blog-h3">{children}</h3>
-)
-
-const BlockQuote = ({ children }: { children?: React.ReactNode }) => (
-  <blockquote className="blog-tip-box">{children}</blockquote>
-)
-
-const NormalBlock = ({ children }: { children?: React.ReactNode }) => (
-  <p className="blog-p">{children}</p>
-)
-
-// ---------------------------------------------------------------------------
-// Custom mark components (inline annotations)
-// ---------------------------------------------------------------------------
-
-const Strong = ({ children }: { children?: React.ReactNode }) => (
-  <span className="blog-inline-bold">{children}</span>
-)
-
-const Em = ({ children }: { children?: React.ReactNode }) => (
-  <em className="blog-em">{children}</em>
-)
-
-// ---------------------------------------------------------------------------
-// Custom block type components (custom Sanity block types)
-// ---------------------------------------------------------------------------
-
-// Red flag callout — add a "redFlag" block type in your Sanity schema
 const RedFlagBlock = ({ value }: { value: { text: string } }) => (
-  <div className="blog-flag-item">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="blog-flag-icon"
-      aria-hidden="true"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 9v4" />
-      <path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z" />
-      <path d="M12 16h.01" />
+  <div className="my-6 flex items-start gap-3 px-5 py-4 rounded-xl border border-amber-400 bg-amber-50">
+    <svg className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
     </svg>
-    <p>{value.text}</p>
+    <p className="text-amber-900 text-base leading-relaxed m-0">{value.text}</p>
   </div>
-)
+);
 
-// Tip / highlight callout — add a "tipBox" block type in your Sanity schema
 const TipBoxBlock = ({ value }: { value: { text: string } }) => (
-  <div className="blog-tip-box">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      style={{ flexShrink: 0, marginTop: 2 }}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" />
-      <path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3" />
-      <path d="M9.7 17h4.6" />
+  <div className="my-6 flex items-start gap-3 px-5 py-4 rounded-xl border-l-4 border-brand-accent bg-brand-sand">
+    <svg className="w-5 h-5 text-brand-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
     </svg>
-    <p>{value.text}</p>
+    <p className="text-brand-dark text-base leading-relaxed m-0">{value.text}</p>
   </div>
-)
+);
 
-// Checklist item — add a "checklistItem" block type in your Sanity schema
 const ChecklistItemBlock = ({ value }: { value: { text: string } }) => (
-  <div className="blog-checklist-item">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="blog-checklist-icon"
-      aria-hidden="true"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M9 11l3 3l8 -8" />
-      <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+  <div className="flex items-start gap-3 my-2">
+    <svg className="w-5 h-5 text-brand-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
-    <p>{value.text}</p>
+    <p className="text-brand-charcoal/80 text-base leading-relaxed m-0">{value.text}</p>
   </div>
-)
+);
 
-// Q&A block — add a "qaItem" block type in your Sanity schema
-const QAItemBlock = ({
-  value,
-}: {
-  value: { question: string; answer: string; index: number }
-}) => (
-  <div className="blog-q-item">
-    <p className="blog-q-label">Question {value.index}</p>
-    <p className="blog-q-text">{value.question}</p>
-    <p className="blog-q-answer">{value.answer}</p>
+const QAItemBlock = ({ value }: { value: { question: string; answer: string; index?: number } }) => (
+  <div className="my-6 rounded-xl border border-brand-sand overflow-hidden">
+    <div className="bg-brand-dark px-5 py-3">
+      <p className="font-display font-bold text-brand-accent text-sm uppercase tracking-widest m-0">
+        {value.index ? `Question ${value.index}` : "Q"}
+      </p>
+      <p className="font-display text-xl font-bold text-white m-0 mt-1">{value.question}</p>
+    </div>
+    <div className="px-5 py-4 bg-white">
+      <p className="text-brand-charcoal/80 leading-relaxed m-0">{value.answer}</p>
+    </div>
   </div>
-)
+);
 
-// ---------------------------------------------------------------------------
-// Portable Text component map
-// ---------------------------------------------------------------------------
+// ── Component map ───────────────────────────────────────────────
 
 const components: PortableTextComponents = {
   block: {
-    normal: ({ children }) => <NormalBlock>{children}</NormalBlock>,
-    h2: ({ children }) => <H2>{children}</H2>,
-    h3: ({ children }) => <H3>{children}</H3>,
-    blockquote: ({ children }) => <BlockQuote>{children}</BlockQuote>,
+    normal: ({ children }) => (
+      <p className="text-brand-charcoal/80 text-lg leading-relaxed mb-5">{children}</p>
+    ),
+    h2: ({ children }) => (
+      <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-dark mt-12 mb-4 pb-3 border-b-2 border-brand-accent leading-tight">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="font-display text-2xl font-bold text-brand-dark mt-8 mb-3 leading-snug">
+        {children}
+      </h3>
+    ),
+    h4: ({ children }) => (
+      <h4 className="font-display text-xl font-bold text-brand-dark mt-6 mb-2">{children}</h4>
+    ),
+    blockquote: ({ children }) => (
+      <blockquote className="my-8 pl-6 border-l-4 border-brand-accent bg-brand-sand rounded-r-xl py-4 pr-4">
+        <p className="text-brand-dark text-lg italic leading-relaxed m-0">{children}</p>
+      </blockquote>
+    ),
   },
-  marks: {
-    strong: ({ children }) => <Strong>{children}</Strong>,
-    em: ({ children }) => <Em>{children}</Em>,
-  },
-  types: {
-    redFlag: RedFlagBlock,
-    tipBox: TipBoxBlock,
-    checklistItem: ChecklistItemBlock,
-    qaItem: QAItemBlock,
-  },
+
   list: {
-    bullet: ({ children }) => <ul className="blog-ul">{children}</ul>,
-    number: ({ children }) => <ol className="blog-ol">{children}</ol>,
+    bullet: ({ children }) => (
+      <ul className="my-5 space-y-2 list-none pl-0">{children}</ul>
+    ),
+    number: ({ children }) => (
+      <ol className="my-5 space-y-2 list-none pl-0">{children}</ol>
+    ),
   },
+
   listItem: {
-    bullet: ({ children }) => <li className="blog-li">{children}</li>,
-    number: ({ children }) => <li className="blog-li">{children}</li>,
+    bullet: ({ children }) => (
+      <li className="flex items-start gap-3 text-brand-charcoal/80 text-base leading-relaxed">
+        <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-brand-accent flex-shrink-0" />
+        <span>{children}</span>
+      </li>
+    ),
+    number: ({ children }) => (
+      <li className="flex items-start gap-3 text-brand-charcoal/80 text-base leading-relaxed">
+        <span className="font-display font-bold text-brand-accent flex-shrink-0 leading-none mt-0.5">—</span>
+        <span>{children}</span>
+      </li>
+    ),
   },
-}
 
-// ---------------------------------------------------------------------------
-// Main renderer
-// ---------------------------------------------------------------------------
+  marks: {
+    strong: ({ children }) => (
+      <strong className="font-bold text-brand-dark">{children}</strong>
+    ),
+    em: ({ children }) => (
+      <em className="italic text-brand-charcoal/90">{children}</em>
+    ),
+    underline: ({ children }) => (
+      <span className="underline decoration-brand-accent decoration-2 underline-offset-2">{children}</span>
+    ),
+    "strike-through": ({ children }) => (
+      <span className="line-through opacity-60">{children}</span>
+    ),
+    code: ({ children }) => (
+      <code className="font-mono text-sm bg-brand-sand text-brand-dark px-1.5 py-0.5 rounded">{children}</code>
+    ),
+    link: ({ value, children }) => (
+      <a
+        href={value?.href}
+        target={value?.href?.startsWith("http") ? "_blank" : undefined}
+        rel={value?.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+        className="text-brand-dark underline decoration-brand-accent decoration-2 underline-offset-2 hover:text-brand-accent transition-colors"
+      >
+        {children}
+      </a>
+    ),
+  },
 
-interface PortableTextRendererProps {
-  content: PortableTextBlock[]
-}
+  types: {
+    image: ({ value }) => {
+      const url = value?.asset?.url ?? value?.asset?._ref;
+      if (!url) return null;
+      return (
+        <figure className="my-10">
+          <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
+            <Image
+              src={url}
+              alt={value.alt ?? "Blog image"}
+              fill
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+            />
+          </div>
+          {value.caption && (
+            <figcaption className="text-center text-sm text-brand-charcoal/50 mt-3 italic">
+              {value.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    },
+    redFlag:       RedFlagBlock,
+    tipBox:        TipBoxBlock,
+    checklistItem: ChecklistItemBlock,
+    qaItem:        QAItemBlock,
+  },
+};
 
-export default function PortableTextRenderer({
-  content,
-}: PortableTextRendererProps) {
+// ── Renderer ────────────────────────────────────────────────────
+
+export default function PortableTextRenderer({ content }: { content: PortableTextBlock[] }) {
   return (
-    <div className="blog-body">
+    <div className="max-w-none">
       <PortableText value={content} components={components} />
     </div>
-  )
+  );
 }
