@@ -1,0 +1,292 @@
+/* ============================================================
+   Blog post styles — Let's Get Trowled
+   Import in your global CSS or as a CSS module.
+   Fonts loaded via next/font or <link> in layout.tsx:
+     - Playfair Display (400, 500)
+     - Source Serif 4 (300, 300 italic, 400)
+   ============================================================ */
+
+/* ---------------------------------------------------------------------------
+   Wrapper
+   --------------------------------------------------------------------------- */
+
+.blog-wrap {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 300;
+  color: var(--color-text, #1a1a1a);
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Label / meta row
+   --------------------------------------------------------------------------- */
+
+.blog-label {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #888);
+  margin: 0 0 1rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Title
+   --------------------------------------------------------------------------- */
+
+.blog-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text, #1a1a1a);
+  margin: 0 0 1.25rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Excerpt / standfirst
+   --------------------------------------------------------------------------- */
+
+.blog-excerpt {
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--color-text-muted, #666);
+  margin: 0 0 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 0.5px solid var(--color-border, #e0e0e0);
+}
+
+/* ---------------------------------------------------------------------------
+   Hero image
+   --------------------------------------------------------------------------- */
+
+.blog-hero-image {
+  margin: 0 0 2.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.blog-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ---------------------------------------------------------------------------
+   Body wrapper
+   --------------------------------------------------------------------------- */
+
+.blog-body {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--color-text, #1a1a1a);
+}
+
+/* ---------------------------------------------------------------------------
+   Paragraphs
+   --------------------------------------------------------------------------- */
+
+.blog-p {
+  margin: 0 0 1.25rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Headings
+   --------------------------------------------------------------------------- */
+
+.blog-h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-text, #1a1a1a);
+  margin: 2.5rem 0 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--color-text, #1a1a1a);
+}
+
+.blog-h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--color-text, #1a1a1a);
+  margin: 1.75rem 0 0.5rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Inline marks
+   --------------------------------------------------------------------------- */
+
+.blog-inline-bold {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-text, #1a1a1a);
+}
+
+.blog-em {
+  font-style: italic;
+}
+
+/* ---------------------------------------------------------------------------
+   Lists
+   --------------------------------------------------------------------------- */
+
+.blog-ul,
+.blog-ol {
+  margin: 0 0 1.25rem 1.25rem;
+  padding: 0;
+}
+
+.blog-li {
+  margin-bottom: 0.5rem;
+  line-height: 1.75;
+}
+
+/* ---------------------------------------------------------------------------
+   Checklist items
+   --------------------------------------------------------------------------- */
+
+.blog-checklist-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.blog-checklist-item p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.blog-checklist-icon {
+  color: var(--color-text-muted, #888);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Red flag callout
+   --------------------------------------------------------------------------- */
+
+.blog-flag-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 0.9rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface, #f7f7f5);
+  border-left: 2px solid #d85a30;
+  border-radius: 0 8px 8px 0;
+  align-items: flex-start;
+}
+
+.blog-flag-icon {
+  color: #d85a30;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.blog-flag-item p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ---------------------------------------------------------------------------
+   Tip / highlight callout
+   --------------------------------------------------------------------------- */
+
+.blog-tip-box {
+  display: flex;
+  gap: 12px;
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-surface, #f7f7f5);
+  border-radius: 12px;
+  border: 0.5px solid var(--color-border, #e0e0e0);
+  align-items: flex-start;
+}
+
+.blog-tip-box p {
+  margin: 0;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--color-text-muted, #666);
+  line-height: 1.7;
+}
+
+/* ---------------------------------------------------------------------------
+   Q&A items
+   --------------------------------------------------------------------------- */
+
+.blog-q-item {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 0.5px solid var(--color-border, #e0e0e0);
+}
+
+.blog-q-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.blog-q-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #888);
+  margin: 0 0 0.2rem;
+}
+
+.blog-q-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text, #1a1a1a);
+  margin: 0 0 0.4rem;
+}
+
+.blog-q-answer {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--color-text-muted, #666);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Closing / sign-off paragraph
+   (wrap in a <div class="blog-closing"> in your last normal block
+    or add a custom Sanity "closing" block type)
+   --------------------------------------------------------------------------- */
+
+.blog-closing {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 0.5px solid var(--color-border, #e0e0e0);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--color-text-muted, #666);
+  line-height: 1.75;
+}
+
+/* ---------------------------------------------------------------------------
+   Dark mode overrides
+   --------------------------------------------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  .blog-wrap {
+    --color-text: #e8e6e0;
+    --color-text-muted: #9e9b93;
+    --color-border: #2e2e2c;
+    --color-surface: #1e1e1c;
+  }
+
+  .blog-h2 {
+    border-top-color: #e8e6e0;
+  }
+}
