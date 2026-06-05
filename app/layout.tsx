@@ -59,8 +59,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${barlow.variable} ${barlowCondensed.variable}`}>
       <head>
-        <link rel="icon" href="/images/favicon.ico" />
-        <link rel="apple-touch-icon" href="/images/icon.png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
