@@ -1145,6 +1145,11 @@ export const COMMUNITY_LINKS: CommunityLink[] = [
     icon: "house",
   },
   {
+    name: "Sherwood Build Co.",
+    url: "https://www.sherwoodbuildco.com/",
+    icon: "house",
+  },
+  {
     name: "Sherwood Airconditioning",
     url: "https://www.google.com/search?q=sherwood+air+conditioning+seymour",
     icon: "wind",
